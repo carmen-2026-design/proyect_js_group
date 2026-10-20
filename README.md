@@ -1,2 +1,2 @@
-# proyecto_js_grupal
+# proyect_js_group
 Primer proyecto grupal javascript
