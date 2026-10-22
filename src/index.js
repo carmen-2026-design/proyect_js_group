@@ -18,9 +18,30 @@
 
 import Character from "./core/Character.js";
 import data from "./data/characters.json" with {type: "json"};
+import Catalog from "./core/Catalog.js";
 
-const characters = data.characters.map(c => Character.fromJson(c) );
+const characters = data.characters.map(c => Character.fromJson(c));
 
-// characters.slice(0,10).forEach(p=>shop.addProduct(p,5));
+// characters.slice(0,10).forEach(c=>catalog.addCharacter(c,5));
 
-console.log(characters);
+//console.log(characters);
+
+const catalogAll = new Catalog();
+
+for (let i = 0; i < characters.length; i++) {
+    catalogAll.addCharacter(characters[i]);
+    console.log("--------Catalogo:");
+    console.log(characters[i]);
+}
+
+console.log("***********Coleccion de catalogos: " + catalogAll.characters.size);
+console.log(catalogAll);
+
+//Filtrado del catálogo por texto del nombre
+let catalogFilter = new Catalog();
+catalogFilter = catalogAll.filterCatalogByName('Captain');
+console.log("***********Coleccion filtrada: " + catalogFilter.characters.size);
+// console.log(catalogFilter.size);
+console.log(catalogFilter);
+
+
