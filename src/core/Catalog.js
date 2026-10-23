@@ -1,4 +1,4 @@
-import Character from "./Character.js";
+import { createCharacterArticle } from "../ui/renderer.js";
 
 //Colección de objetos de la clase Character
 class Catalog{
@@ -12,12 +12,16 @@ class Catalog{
         this.characters.set(character.name, character);
     }
 
-    paintCatalog(){
-        const htmlCatalog = "";
+    paintCatalog(containerElement){
+        containerElement.innerHTML = "";
 
-        this.characters.forEach(characters => {
-            htmlCatalog += Character.paintCharacter();
-        })
+        const htmlCatalog = document.createElement("section");
+
+        this.characters.forEach((character) => {
+            const cardElement = createCharacterArticle(character);
+        htmlCatalog.appendChild(cardElement); 
+        });
+        containerElement.appendChild(htmlCatalog);  
     }
 
     //Devuelve un nuevo catálogo con los resultados de la búsqueda
@@ -35,4 +39,3 @@ class Catalog{
 };
 
 export default Catalog; 
-

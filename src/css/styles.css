@@ -22,7 +22,7 @@ body {
     font-size: 5rem;
     color: white;
 }
-#main-index span {
+#main-index a {
     color: white;
 }
 
@@ -32,10 +32,12 @@ body {
     padding: 5rem;
 }
 
-#main-index div div span {
+#main-index div div a {
     text-transform: uppercase;
     font-size: 3rem;
     font-weight: 700;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.079);
 
 }
 .modal {
@@ -91,35 +93,3 @@ video {
 
 /* FIN ESTILOS PÁGINA DE INICIO */
 
-/* INICIO ESTILOS PÁGINA DE CATALOGO */
-#header-catalog {
-    
-}
-#catalog-main section>div {
-    display: flex;
-    flex-wrap: wrap;
-    width: 96%;
-    max-width: 980px;
-    margin: 0 auto;
-    column-gap: 1rem;
-}
-
-#catalog-main article {
-    width: 32%;
-    border: 1px solid black;
-    overflow: hidden;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-#catalog-main img{
-    width: 100%;
-}
-
-.card-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-}
-/* FIN ESTILOS PÁGINA DE CATALOGO */
