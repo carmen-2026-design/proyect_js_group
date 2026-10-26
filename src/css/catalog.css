@@ -1,25 +1,106 @@
+/*VARIABLES GENERALES*/
+
+
+
+:root {
+    --azulDisney: #0b2d6b;
+    --dorado: #ffc857;
+    --azulCielo: #7ec8fc;
+    --morado: #b388ff;
+    --azulCards: #14344b;
+    --fondoOscuro: #0a0a0a;
+    --titulo: "Baloo 2";
+    --titulo1: "pacifico";
+    --galleta: "lilita one";
+    --blanco: white;
+}
+
+
+
 /* INICIO ESTILOS PÁGINA DE CATALOGO */
-/* #header-catalog {
-    
-} */
-#catalog-main section>div {
+html,
+body {
+    background-color: var(--azulDisney);
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 3rem 5rem 5rem 5rem;
+    position: relative;
+}
+
+header a i {
+    color: transparent;
+    transition: all 0.5s ease;
+}
+
+header a,
+header a:link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 2rem;
+    position: absolute;
+    left: 2%;
+}
+
+header a:hover {
+    color: var(--azulCielo);
+}
+
+header a:hover i{
+    color: var(--azulCielo);
+}
+
+
+
+header h1 {
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+
+#catalog-main a i {
+    font-size: 3rem;
+    color: var(--blanco);
+    position: fixed;
+    right: 3%;
+    top: 90%;
+}
+
+
+
+#catalog-main section {
     display: flex;
     flex-wrap: wrap;
     width: 96%;
     max-width: 980px;
     margin: 0 auto;
-    column-gap: 1rem;
+    gap: 1rem;
 }
 
-#catalog-main article {
+#catalog-main section article {
     width: 32%;
-    border: 1px solid black;
     overflow: hidden;
     box-sizing: border-box;
     border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    background-color: var(--azulCards);
+    border: 1px solid var(--azulCielo);
+    cursor: pointer;
+    transition: all 0.5s ease;
 }
 
-#catalog-main img{
+#catalog-main section article:hover {
+    transform: translateY(-2px);
+
+}
+
+
+
+
+#catalog-main img {
     width: 100%;
 }
 
@@ -29,4 +110,28 @@
     align-items: center;
     padding: 0.5rem;
 }
+
+i.oculto {
+    display: none;
+}
+
+/* INICIO VERSIÓN MOVIL*/
+
+@media screen and (max-width:800px) {
+
+    header h1 {
+    font-size: 4rem;
+}
+
+#catalog-main section article {
+    width: 48%;
+}
+header a, header a:link
+ {
+    font-size: 1.2rem;
+}
+}
+
+
+
 /* FIN ESTILOS PÁGINA DE CATALOGO */

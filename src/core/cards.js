@@ -34,3 +34,20 @@ document.addEventListener('DOMContentLoaded',() => {
         console.warn("No se encontrado el contenedor de la sección");
     }
 })
+
+
+
+
+//SCROLL TOP DETECTOR
+
+const manoArriba = document.getElementById('manoArriba');
+
+function scrollTop (){
+    if (window.scrollY < 500){
+      manoArriba.classList.add('oculto');  
+    }else{
+           manoArriba.classList.remove('oculto');  
+  
+    }
+}
+window.addEventListener('scroll', scrollTop);
