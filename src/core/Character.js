@@ -6,7 +6,7 @@ class Character{
         this.imageUrl = imageUrl;
         this.films = films;   //Arrray
         this.videoGames = videoGames; //Array
-        this.favorite= false;
+        this.favorite = false;
     }
 
     static fromJson({name, imageUrl, films, videoGames}){
@@ -14,15 +14,10 @@ class Character{
         return character;
     }
 
-// favorites = new Set();
-
-// setFavorites = (name) => {
-//     if (this.favorites.has(name)) {
-//         this.favorites.delete(name);
-//     } else {
-//         this.favorites.add(name);
-//     }
-// };
+    toggleFavorite() {
+        this.favorite = !this.favorite;
+        
+    }
 }
 
 

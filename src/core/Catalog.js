@@ -80,6 +80,36 @@ class Catalog{
         return catalogToShow;
     }
 
+    //Devuelve los personajes favoritos
+    filterCatalogByFavorites() {
+        let favoriteCatalog = new Catalog();
+
+        this.characters.forEach((character) => {
+            if (character.favorite) {
+                favoriteCatalog.addCharacter(character);
+            }
+        });
+
+        favoriteCatalog.paintCatalog();
+    }
+
+
+    //Elimina los filtros
+    removeFilters() {
+        let catalogToShow = new Catalog();
+
+
+        this.characters.forEach((character) => {
+            
+                catalogToShow.addCharacter(character);
+            
+        });
+
+        catalogToShow.paintCatalog();
+
+
+    }
+
 
 };
 
