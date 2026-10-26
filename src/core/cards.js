@@ -50,6 +50,14 @@ async function LoadCatalog(){
     const nextButton = document.getElementById("next-button");
     nextButton.addEventListener("click",()=>catalogAll.nextPage());
 
+    //Boton favoritos
+    const btnFavorites = document.getElementById("filter-favorites-btn");
+    btnFavorites.addEventListener("click", () => catalogAll.filterCatalogByFavorites());
+
+    //Boton eliminar filtros
+    const btnEliminarFiltros = document.getElementById("quitar-filtros");
+    btnEliminarFiltros.addEventListener("click", () => catalogAll.removeFilters() );
+
     //Carga la primera página de personajes
     catalogAll.initializePages(CARDS_PER_PAGE,true);
 
