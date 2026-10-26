@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cookie&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cookie&family=Lilita+One&family=Pacifico&display=swap');
+
+/*VARIABLES GENERALES*/
+
+
+
+:root {
+--azulDisney: #0b2d6b;
+--dorado: #ffc857;
+--azulCielo: #7ec8fc;
+--morado: #b388ff;
+--fondoOscuro: #0a0a0a;
+--titulo: "Baloo 2";
+--titulo1: "pacifico";
+--galleta: "lilita one";
+}
+
+
 /* ESTILOS PARA PÁGINA DE INICIO */
 
 html,
@@ -18,12 +39,13 @@ body {
     margin: 0;
     width: 100%;
     text-align: center;
-    text-transform: uppercase;
     font-size: 5rem;
     color: white;
+    font-family: var(--galleta);
 }
 #main-index a {
     color: white;
+    font-family: var(--galleta);
 }
 
 #main-index div>div {
@@ -37,9 +59,20 @@ body {
     font-size: 3rem;
     font-weight: 700;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.079);
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.24);
+    transition: all 0.3s ease;
 
 }
+
+#main-index div div a:hover {
+   background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.267);
+    color: var(--dorado);
+}
+
 .modal {
 position: absolute;
 top: 10%;

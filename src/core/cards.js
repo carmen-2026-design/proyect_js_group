@@ -3,36 +3,19 @@ import data from "../data/characters.json" with {type: "json"};
 import Catalog from "./Catalog.js";
 
 import { createCharacterArticle } from "../ui/renderer.js";
-import { getCatalog } from  "../utils/api.js";
+import { getCatalog } from "../utils/api.js";
 
-const CARDS_PER_PAGE = 3;
+const CARDS_PER_PAGE = 9;
 
+async function LoadCatalog() {
 
-//Carga el catálogo con los personajes de la API
-// const {dataCatalog,error} = await getCatalog();
-// let result = dataCatalog;
-// console.log(result);
+    const { data: dataCatalog, error } = await getCatalog();
 
-// if (error){
-//     alert ("ha ocurrido un error");
-
-// }
-// return{
-//     total: result.total,
-//     items: result.data;
-// }
-
-async function LoadCatalog(){
-    
-    const {data : dataCatalog,error} = await getCatalog();
-
-    if (error){
-        alert ("Ha ocurrido un error");
+    if (error) {
+        alert("Ha ocurrido un error");
     }
 
-
     const characters = dataCatalog.data.map(c => Character.fromJson(c));
-
 
     //Carga el catálogo con los personajes del JSON
     // const characters = data.characters.map(c => Character.fromJson(c));
@@ -45,10 +28,10 @@ async function LoadCatalog(){
 
     //Botones anterior/siguiente de la página de personajes
     const previousButton = document.getElementById("previous-button");
-    previousButton.addEventListener("click",()=>catalogAll.previousPage());
+    previousButton.addEventListener("click", () => catalogAll.previousPage());
 
     const nextButton = document.getElementById("next-button");
-    nextButton.addEventListener("click",()=>catalogAll.nextPage());
+    nextButton.addEventListener("click", () => catalogAll.nextPage());
 
     //Boton favoritos
     const btnFavorites = document.getElementById("filter-favorites-btn");
@@ -59,13 +42,31 @@ async function LoadCatalog(){
     btnEliminarFiltros.addEventListener("click", () => catalogAll.removeFilters() );
 
     //Carga la primera página de personajes
-    catalogAll.initializePages(CARDS_PER_PAGE,true);
+    catalogAll.initializePages(CARDS_PER_PAGE, true);
 
     let catalogToShow = new Catalog();
     catalogToShow = catalogAll.getCharactersPage();
     catalogToShow.paintCatalog();
 
+
+    //SCROLL TOP DETECTOR
+
+    const manoArriba = document.getElementById('manoArriba');
+
+    function scrollTop() {
+        if (window.scrollY < 500) {
+            manoArriba.classList.add('oculto');
+        } else {
+            manoArriba.classList.remove('oculto');
+
+        }
+    }
+    window.addEventListener('scroll', scrollTop);
 }
+
+
+
+
 
 LoadCatalog();
 
