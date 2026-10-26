@@ -59,9 +59,20 @@ body {
     font-size: 3rem;
     font-weight: 700;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.079);
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.24);
+    transition: all 0.3s ease;
 
 }
+
+#main-index div div a:hover {
+   background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.267);
+    color: var(--dorado);
+}
+
 .modal {
 position: absolute;
 top: 10%;

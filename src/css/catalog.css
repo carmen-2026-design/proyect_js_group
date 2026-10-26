@@ -97,6 +97,11 @@ header h1 {
 
 }
 
+#catalog-main>div  {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
 
 
 
@@ -114,6 +119,30 @@ header h1 {
 i.oculto {
     display: none;
 }
+
+/*botones IA*/
+#previous-button, #next-button {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: #f0f0f0;
+    color: #222;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#previous-button:hover, #next-button:hover
+{
+    background: var(--dorado);
+    color: var(--fondoOscuro);
+    transform: scale(1.1);
+    font-weight: 700;
+}
+
+/*botones IA*/
+
 
 /* INICIO VERSIÓN MOVIL*/
 
