@@ -7,20 +7,25 @@
     <title>Catalogo</title>
     <link rel="stylesheet" href="../css/catalog.css">
     <script src="https://kit.fontawesome.com/ff1217681a.js" crossorigin="anonymous"></script>
+
 </head>
 
-<body>
+<body id="top">
     <header id="header-catalog">
         <h1>catálogo</h1>
+        <a href="../../index.html"><i class="fa-solid fa-hand-point-left desaparecer"></i>volver a inicio</a>
+
     </header>
     <main id="catalog-main">
-        <a href="../../index.html">Volver a inicio</a>
-        <button id="previous-button">Previous</button>
-        <button id="next-button">Next</button>
-        <section id="catalog-section"></section>
-        
+                <div>
+            <button id="previous-button">Prev</button>
+            <button id="next-button">Next</button>
+        </div>
 
-<!--        <div>
+        <section id="catalog-section"></section>
+
+
+        <!--        <div>
                  <article><img src="img/images.webp" alt="">
                     <div class="card-info">
                         <p>mickey</p>
@@ -39,7 +44,8 @@
                         <button class="favorite-btn"><i class="fa-regular fa-heart"></i></button>    
                     </div>
                 </article>
-           </div> --> 
+           </div> -->
+        <a href="#top"><i id="manoArriba" class="fa-solid fa-hand-point-up"></i></a>
     </main>
     <script type="module" src="../core/cards.js"></script>
 </body>
