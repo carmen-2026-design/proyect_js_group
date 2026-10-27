@@ -1,17 +1,19 @@
 import Character from "./Character.js";
 // import data from "../data/characters.json" with {type: "json"};
 import Catalog from "./Catalog.js";
-import {  renderCharacterSortSelect } from "../ui/renderer.js";
+import {  renderFilterForm, renderCharacterSortSelect } from "../ui/renderer.js";
 import { getCatalog } from "../utils/api.js";
-import {  sortCharacters } from "../utils/functions.js";
+import {  getUniqueValues, sortCharacters } from "../utils/functions.js";
 
 const PAGES_NUMBER_API = 1; //PAGE_SIZE_API = 500;
 
 const CARDS_PER_PAGE = 9;
 
 async function LoadCatalog() {
-    let catalogAll = new Catalog();
-    catalogAll = await getCatalogAll();
+    /* let catalogAll = new Catalog();
+    catalogAll = await getCatalogAll(); */
+
+    const { catalogAll, characters } = await getCatalogAll();
 
     //Botones anterior/siguiente de la página de personajes
     const previousButton = document.getElementById("previous-button");
@@ -33,7 +35,7 @@ async function LoadCatalog() {
     // ================================ Logica filtros ==================================== //
 
     // ------- Filtros por categorias en radio buttons + boton de filtrar ---------- //
-    /* const filtersForm = renderFilterForm();
+    const filtersForm = renderFilterForm();
     document.getElementById("filter-container").append(filtersForm);
 
 
@@ -98,7 +100,7 @@ async function LoadCatalog() {
         });
 
     };
- */
+ 
     // ----------- Filtro de ordenación de fichas ------- //
     const orderBtns = renderCharacterSortSelect();
     document.getElementById("sort-btns").append(orderBtns);
@@ -148,6 +150,7 @@ async function LoadCatalog() {
 async function getCatalogAll() {
 
     const catalogAll = new Catalog();
+    let allCharacters = [];
 
     for (let page = 1; page <= PAGES_NUMBER_API; page++) {
         const { data: dataCatalog, error } = await getCatalog(page);
@@ -163,10 +166,12 @@ async function getCatalogAll() {
 
         for (let i = 0; i < characters.length; i++) {
             catalogAll.addCharacter(characters[i]);
+
+            allCharacters.push(characters[i]);
         }
     }
 
-    return catalogAll;
+    return { catalogAll, characters: allCharacters };
 }
 
 
