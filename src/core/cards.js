@@ -1,30 +1,16 @@
 import Character from "./Character.js";
-import data from "../data/characters.json" with {type: "json"};
+// import data from "../data/characters.json" with {type: "json"};
 import Catalog from "./Catalog.js";
-
 import { createCharacterArticle } from "../ui/renderer.js";
 import { getCatalog } from "../utils/api.js";
+
+const PAGES_NUMBER_API = 1; //PAGE_SIZE_API = 500;
 
 const CARDS_PER_PAGE = 9;
 
 async function LoadCatalog() {
-
-    const { data: dataCatalog, error } = await getCatalog();
-
-    if (error) {
-        alert("Ha ocurrido un error");
-    }
-
-    const characters = dataCatalog.data.map(c => Character.fromJson(c));
-
-    //Carga el catálogo con los personajes del JSON
-    // const characters = data.characters.map(c => Character.fromJson(c));
-
-    const catalogAll = new Catalog();
-
-    for (let i = 0; i < characters.length; i++) {
-        catalogAll.addCharacter(characters[i]);
-    }
+    let catalogAll = new Catalog();
+    catalogAll = await getCatalogAll();
 
     //Botones anterior/siguiente de la página de personajes
     const previousButton = document.getElementById("previous-button");
@@ -48,6 +34,10 @@ async function LoadCatalog() {
     catalogToShow = catalogAll.getCharactersPage();
     catalogToShow.paintCatalog();
 
+    //Label con el número de página
+    const lblNumPage = document.getElementById("num-page");
+    lblNumPage.innerText = catalogAll.getTextPage();
+      
 
     //SCROLL TOP DETECTOR
 
@@ -64,8 +54,30 @@ async function LoadCatalog() {
     window.addEventListener('scroll', scrollTop);
 }
 
+async function getCatalogAll(){
 
+    const catalogAll = new Catalog();
+       
+    for (let page = 1; page <= PAGES_NUMBER_API; page++)
+    {
+        const { data: dataCatalog, error } = await getCatalog(page);
+    
+        if (error) {
+            alert("Ha ocurrido un error");
+        }
 
+        const characters = dataCatalog.data.map(c => Character.fromJson(c));
+
+        //Carga el catálogo con los personajes del JSON
+        // const characters = data.characters.map(c => Character.fromJson(c));
+        
+        for (let i = 0; i < characters.length; i++) {
+            catalogAll.addCharacter(characters[i]);
+        }
+    }
+
+    return catalogAll;
+}
 
 
 LoadCatalog();
