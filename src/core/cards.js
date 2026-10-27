@@ -2,8 +2,9 @@ import Character from "./Character.js";
 import data from "../data/characters.json" with {type: "json"};
 import Catalog from "./Catalog.js";
 
-import { createCharacterArticle } from "../ui/renderer.js";
+import { createCharacterArticle, renderFilterForm, renderCharacterSortSelect } from "../ui/renderer.js";
 import { getCatalog } from "../utils/api.js";
+import { getUniqueValues, sortCharacters } from "../utils/functions.js";
 
 const CARDS_PER_PAGE = 9;
 
@@ -13,6 +14,7 @@ async function LoadCatalog() {
 
     if (error) {
         alert("Ha ocurrido un error");
+        return
     }
 
     const characters = dataCatalog.data.map(c => Character.fromJson(c));
@@ -40,6 +42,96 @@ async function LoadCatalog() {
     //Boton eliminar filtros
     const btnEliminarFiltros = document.getElementById("quitar-filtros");
     btnEliminarFiltros.addEventListener("click", () => catalogAll.removeFilters() );
+    
+    
+    
+    // ================================ Logica filtros ==================================== //
+    
+   // ------- Filtros por categorias en radio buttons + boton de filtrar ---------- //
+    const filtersForm = renderFilterForm();
+    document.getElementById("filter-container").append(filtersForm);
+    
+        
+    
+        if(filtersForm){
+            const selectElement = filtersForm.querySelector("select[name='filter-value']");
+            const radios = filtersForm.querySelectorAll("input[name='filter-category']")
+           
+            
+            const updateSelectOpt = (category) => {
+                const uniqueValues = getUniqueValues(characters, category);
+    
+                selectElement.innerHTML = "";
+                selectElement.append(...uniqueValues.map(val => {
+                    const option = document.createElement("option");
+                    option.value = val;
+                    option.textContent = val;
+                    return option;
+                }));
+            };
+    
+            //radio marcado por defecto al inicializar 
+            const initialRadio = filtersForm.querySelector("input[name='filter-category']:checked");
+            if(initialRadio){
+                updateSelectOpt(initialRadio.value);
+            }
+    
+    
+            //cambiar categoria 
+            radios.forEach(radio =>{
+                radio.addEventListener("change", (event) =>{
+                    updateSelectOpt(event.target.value);
+                });
+            });
+    
+            //Boton filtrar
+            filtersForm.addEventListener("submit", (event) =>{
+                event.preventDefault();
+    
+                const formData = new FormData(filtersForm);
+                const selectedCategory = formData.get("filter-category");
+                const selectedValue = formData.get("filter-value");
+    
+                const filteredCharacters = characters.filter(char => {
+                    const propValue = char[selectedCategory];
+                    if(Array.isArray(propValue)){
+                        return propValue.includes(selectedValue);
+                    }else{
+                        return propValue === selectedValue;
+                    }
+                });
+
+
+                //pintar el catalogo de filtrados
+                const catalogFiltered = new Catalog();
+                filteredCharacters.forEach(char => catalogFiltered.addCharacter(char));
+            
+                catalogFiltered.initializePages(CARDS_PER_PAGE, true);
+                catalogFiltered.getCharactersPage().paintCatalog();
+    
+    
+            });
+            
+        };
+
+        // ----------- Filtro de ordenación de fichas ------- //
+        const orderBtns = renderCharacterSortSelect();
+        document.getElementById("sort-btns").append(orderBtns);
+
+
+            orderBtns.addEventListener("change", (event) => {
+                const sortOrder = event.target.value;
+
+                sortCharacters(characters, sortOrder);
+
+                const catalogSorted = new Catalog();
+                characters.forEach(char => catalogSorted.addCharacter(char));
+
+                catalogSorted.initializePages(CARDS_PER_PAGE, true);
+                catalogSorted.getCharactersPage().paintCatalog();
+                
+            });
+
 
     //Carga la primera página de personajes
     catalogAll.initializePages(CARDS_PER_PAGE, true);
