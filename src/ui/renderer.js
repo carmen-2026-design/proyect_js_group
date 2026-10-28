@@ -1,17 +1,22 @@
 function createCharacterArticle(character) {
-    const {name, imageUrl} = character;
-    
+    const { name, imageUrl, films } = character;
+
     const article = document.createElement('article');
-    article.classList.add('character','card-character');
+    article.classList.add('character', 'card-character');
     article.dataset.productId = name;
 
     const characterName = document.createElement('h2');
     characterName.textContent = name;
     characterName.classList.add('character_name');
 
-    const characterImage= document.createElement('img');
+    const characterImage = document.createElement('img');
     characterImage.setAttribute("src", imageUrl);
     characterImage.setAttribute("alt", `image of ${name}`);
+
+    const characterFilms = document.createElement('p');
+    characterFilms.classList.add('character-films')
+    characterFilms.textContent = films.join("\n");
+    characterFilms.classList.add('characterFilms');
 
 
     // =============== Favoritos ================ //
@@ -20,29 +25,30 @@ function createCharacterArticle(character) {
     favBtn.classList.add("btn-fav");
 
     const icon = document.createElement('i');
-    
-        if(character.favorite){
-            icon.className = "fa-solid fa-heart";
-            favBtn.classList.add("fav-active");
 
-        }else{
-            icon.className = "fa-regular fa-heart";
+    if (character.favorite) {
+        icon.className = "fa-solid fa-heart";
+        favBtn.classList.add("fav-active");
 
-        }
-            
+
+    } else {
+        icon.className = "fa-regular fa-heart";
+
+    }
+
+
     favBtn.appendChild(icon)
 
     favBtn.addEventListener("click", () => {
         character.toggleFavorite();
-      
 
-        if(character.favorite){
+
+        if (character.favorite) {
             icon.className = "fa-solid fa-heart";
             favBtn.classList.add("fav-active");
-        }else{
+        } else {
             icon.className = "fa-regular fa-heart";
             favBtn.classList.remove("fav-active")
-            
 
             if(!character.favorite && article.closest("#catalog-section").classList.contains("favorite-view")){
                 article.remove()
@@ -51,7 +57,11 @@ function createCharacterArticle(character) {
         }
     })
 
-    article.append(characterImage, characterName, favBtn);
+
+
+    // favBtn.addEventListener("click", () => {alert(`Te gusta ${name}`)});
+
+    article.append(characterImage, characterName, characterFilms, favBtn);
     return article;
 }
 
