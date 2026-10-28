@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <!-- Aura sutil para estrellas brillantes -->
+    <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="35%" stop-color="#e0f2fe" stop-opacity="0.7" />
+      <stop offset="70%" stop-color="#7dd3fc" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0b2d6b" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Símbolo: Estrella centelleante de 4 puntas (Grande) -->
+    <g id="star-sparkle-lg">
+      <circle cx="0" cy="0" r="14" fill="url(#starGlow)" />
+      <path d="M 0,-20 Q 0,0 20,0 Q 0,0 0,20 Q 0,0 -20,0 Q 0,0 0,-20 Z" fill="#ffffff" />
+      <path d="M 0,-9 Q 0,0 9,0 Q 0,0 0,9 Q 0,0 -9,0 Q 0,0 0,-9 Z" fill="#f0f9ff" />
+    </g>
+
+    <!-- Símbolo: Estrella centelleante (Mediana) -->
+    <g id="star-sparkle-md">
+      <circle cx="0" cy="0" r="8" fill="url(#starGlow)" />
+      <path d="M 0,-12 Q 0,0 12,0 Q 0,0 0,12 Q 0,0 -12,0 Q 0,0 0,-12 Z" fill="#ffffff" />
+    </g>
+
+    <!-- Símbolo: Estrella de 8 puntas -->
+    <g id="star-8pt">
+      <circle cx="0" cy="0" r="12" fill="url(#starGlow)" />
+      <path d="M 0,-16 Q 0,0 16,0 Q 0,0 0,16 Q 0,0 -16,0 Q 0,0 0,-16 Z" fill="#ffffff" />
+      <path d="M -7,-7 L 7,7 M -7,7 L 7,-7" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.75" />
+    </g>
+
+    <!-- Símbolo: Cruz clásica de 4 puntas fina -->
+    <g id="star-cross">
+      <path d="M 0,-8 L 0,8 M -8,0 L 8,0" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+      <circle cx="0" cy="0" r="1.5" fill="#ffffff" />
+    </g>
+  </defs>
+
+  <!-- 1. Fondo liso de color sólido exacto #0b2d6b -->
+  <rect width="100%" height="100%" fill="#0b2d6b" />
+
+  <!-- 2. Capa de Micro-estrellas (Polvo estelar / Puntos de fondo) -->
+  <g fill="#ffffff">
+    <!-- Sector 1 -->
+    <circle cx="70" cy="90" r="1" opacity="0.6" />
+    <circle cx="160" cy="220" r="1.5" opacity="0.8" />
+    <circle cx="280" cy="110" r="0.8" opacity="0.4" />
+    <circle cx="390" cy="280" r="1.2" opacity="0.7" />
+    <circle cx="120" cy="450" r="1" opacity="0.5" />
+    <circle cx="310" cy="520" r="1.8" opacity="0.9" />
+    <circle cx="230" cy="350" r="0.8" opacity="0.3" />
+
+    <!-- Sector 2 -->
+    <circle cx="620" cy="80" r="1.5" opacity="0.75" />
+    <circle cx="740" cy="210" r="0.8" opacity="0.4" />
+    <circle cx="890" cy="130" r="1.2" opacity="0.8" />
+    <circle cx="530" cy="320" r="1" opacity="0.6" />
+    <circle cx="780" cy="410" r="1.8" opacity="0.85" />
+    <circle cx="670" cy="500" r="0.8" opacity="0.3" />
+
+    <!-- Sector 3 -->
+    <circle cx="1120" cy="100" r="1.2" opacity="0.7" />
+    <circle cx="1250" cy="230" r="0.8" opacity="0.5" />
+    <circle cx="1390" cy="90" r="1.5" opacity="0.8" />
+    <circle cx="1540" cy="260" r="1" opacity="0.6" />
+    <circle cx="1710" cy="110" r="1.8" opacity="0.9" />
+    <circle cx="1840" cy="310" r="0.8" opacity="0.4" />
+
+    <!-- Sector 4 -->
+    <circle cx="1020" cy="380" r="1.5" opacity="0.7" />
+    <circle cx="1210" cy="490" r="1" opacity="0.6" />
+    <circle cx="1450" cy="410" r="1.8" opacity="0.8" />
+    <circle cx="1620" cy="470" r="0.8" opacity="0.4" />
+    <circle cx="1790" cy="530" r="1.2" opacity="0.7" />
+
+    <!-- Sector 5 (Parte inferior izquierda) -->
+    <circle cx="90" cy="650" r="1.2" opacity="0.7" />
+    <circle cx="220" cy="810" r="0.8" opacity="0.4" />
+    <circle cx="350" cy="950" r="1.5" opacity="0.8" />
+    <circle cx="430" cy="710" r="1" opacity="0.5" />
+    <circle cx="520" cy="870" r="1.8" opacity="0.9" />
+    <circle cx="160" cy="990" r="0.8" opacity="0.3" />
+
+    <!-- Sector 6 (Parte inferior centro) -->
+    <circle cx="680" cy="670" r="1.2" opacity="0.6" />
+    <circle cx="830" cy="790" r="0.8" opacity="0.5" />
+    <circle cx="970" cy="660" r="1.5" opacity="0.8" />
+    <circle cx="750" cy="920" r="1" opacity="0.7" />
+    <circle cx="910" cy="980" r="1.8" opacity="0.9" />
+
+    <!-- Sector 7 (Parte inferior derecha) -->
+    <circle cx="1150" cy="740" r="1.2" opacity="0.7" />
+    <circle cx="1290" cy="880" r="0.8" opacity="0.4" />
+    <circle cx="1410" cy="690" r="1.5" opacity="0.85" />
+    <circle cx="1580" cy="820" r="1" opacity="0.6" />
+    <circle cx="1730" cy="710" r="1.8" opacity="0.9" />
+    <circle cx="1860" cy="890" r="0.8" opacity="0.4" />
+    <circle cx="1650" cy="990" r="1.2" opacity="0.7" />
+  </g>
+
+  <!-- 3. Estrellas en forma de Cruz fina -->
+  <use href="#star-cross" x="200" y="150" />
+  <use href="#star-cross" x="480" y="380" />
+  <use href="#star-cross" x="720" y="290" />
+  <use href="#star-cross" x="1080" y="210" />
+  <use href="#star-cross" x="1350" y="340" />
+  <use href="#star-cross" x="1690" y="390" />
+  <use href="#star-cross" x="290" y="820" />
+  <use href="#star-cross" x="640" y="740" />
+  <use href="#star-cross" x="1050" y="850" />
+  <use href="#star-cross" x="1520" y="650" />
+  <use href="#star-cross" x="1800" y="810" />
+
+  <!-- 4. Estrellas Medianas Destacadas -->
+  <use href="#star-sparkle-md" x="140" y="280" opacity="0.85" />
+  <use href="#star-sparkle-md" x="550" y="160" opacity="0.9" />
+  <use href="#star-sparkle-md" x="860" y="240" opacity="0.8" />
+  <use href="#star-sparkle-md" x="1280" y="150" opacity="0.95" />
+  <use href="#star-sparkle-md" x="1600" y="180" opacity="0.85" />
+  <use href="#star-sparkle-md" x="380" y="620" opacity="0.8" />
+  <use href="#star-sparkle-md" x="810" y="840" opacity="0.9" />
+  <use href="#star-sparkle-md" x="1220" y="680" opacity="0.85" />
+  <use href="#star-sparkle-md" x="1680" y="920" opacity="0.9" />
+
+  <!-- 5. Estrellas Principales / Destellos Grandes -->
+  <use href="#star-sparkle-lg" x="320" y="200" />
+  <use href="#star-8pt" x="960" y="160" />
+  <use href="#star-sparkle-lg" x="1480" y="280" />
+  <use href="#star-8pt" x="250" y="720" />
+  <use href="#star-sparkle-lg" x="600" y="890" />
+  <use href="#star-8pt" x="1380" y="800" />
+  <use href="#star-sparkle-lg" x="1110" y="520" />
+  <use href="#star-sparkle-lg" x="1780" y="600" />
+</svg>
