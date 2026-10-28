@@ -10,9 +10,7 @@ const PAGES_NUMBER_API = 1; //PAGE_SIZE_API = 500;
 const CARDS_PER_PAGE = 9;
 
 async function LoadCatalog() {
-    /* let catalogAll = new Catalog();
-    catalogAll = await getCatalogAll();  */
-
+   
 
     const [catalogAll, characters] = await getCatalogAll();
 
@@ -25,9 +23,9 @@ async function LoadCatalog() {
     const nextButton = document.getElementById("next-button");
     nextButton.addEventListener("click", () => catalogAll.nextPage());
 
-    //Boton favoritos
+   /*  //Boton favoritos
     const btnFavorites = document.getElementById("filter-favorites-btn");
-    btnFavorites.addEventListener("click", () => catalogAll.filterCatalogByFavorites());
+    btnFavorites.addEventListener("click", () => catalogAll.filterCatalogByFavorites()); */
 
     //Boton eliminar filtros
     const btnEliminarFiltros = document.getElementById("quitar-filtros");

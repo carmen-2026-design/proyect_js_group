@@ -8,6 +8,7 @@ class Character{
         this.films = films;   //Arrray
         this.videoGames = videoGames; //Array
         this.favorite = isInFavorites(this);
+       // this.favorite = false;
     }
 
     static fromJson({name, imageUrl, films, videoGames}){

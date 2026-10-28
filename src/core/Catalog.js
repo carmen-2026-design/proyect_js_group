@@ -98,37 +98,8 @@ class Catalog{
         return catalogToShow;
     }
 
-    //Devuelve los personajes favoritos
-   /*  filterCatalogByFavorites() {
-        let favoriteCatalog = new Catalog();
 
-        this.characters.forEach((character) => {
-            if (character.favorite) {
-                favoriteCatalog.addCharacter(character);orderSort.text
-            }
-        });
-
-        favoriteCatalog.paintCatalog();
-    } */
-
-       /*  filterCatalogByFavorites(){
-            const charFavorites = getFavoritesFromLocalStorage();
-            console.log(charFavorites);
-            let favoriteCatalog = new Catalog();
-
-            this.characters.forEach((character) => {
-                if (character.favorite) {
-                    favoriteCatalog.addCharacter(character);
-                }
-            });
-
-            
-            favoriteCatalog.paintCatalog();            
-
-
-        } */
-
-    filterCatalogByFavorites(){
+     filterCatalogByFavorites(){
         const charFavorites = getFavoritesFromLocalStorage(); // Array con los objetos guardados
         let favoriteCatalog = new Catalog();
 
@@ -143,7 +114,7 @@ class Catalog{
         });
 
         favoriteCatalog.paintCatalog();            
-    }
+    } 
 
 
     //Elimina los filtros
@@ -166,4 +137,7 @@ class Catalog{
 };
 
 export default Catalog; 
+export {
+     filterCatalogByFavorites
+}
 
