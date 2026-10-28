@@ -1,38 +1,49 @@
-
+import Character from "./Character.js";
 import Catalog from "./Catalog.js";
-import Character from "./character.js";
-import { getFavoritesFromLocalStorage } from "./localStorage.js";
+import {  renderFilterForm, renderCharacterSortSelect } from "../ui/renderer.js";
+import { getCatalog } from "../utils/api.js";
+import {  getUniqueValues, sortCharacters } from "../utils/functions.js";
 
+const PAGES_NUMBER_API = 1; 
+const CARDS_PER_PAGE = 9;
 
+async function LoadCatalog() {
 
-// 1. Creamos un catálogo exclusivo para favoritos
-const favoritesCatalog = new Catalog();
-
-favoritesCatalog.filterCatalogByFavorites();
-
-// // 2. Obtenemos los favoritos guardados
-// const savedFavorites = getFavoritesFromLocalStorage();
-
-// // 3. Si hay favoritos, los reconstruimos y los añadimos al catálogo
-// if (savedFavorites) {
-//     savedFavorites.forEach(favData => {
-//         const character = Character.fromJson(favData);
-//         character.favorite = true; // Nos aseguramos de que estén marcados
-//         favoritesCatalog.addCharacter(character);
-//     });
-// }
-
-// // 4. Los pintamos en el HTML de favoritos
-// favoritesCatalog.paintCatalog(); 
- 
-
-
-/* 
- function loadFavorites(){
-        
-        let favoriteCatalog = new Catalog();
-
-        favoriteCatalog.filterCatalogByFavorites();            
-    };
+    const [catalogAll, characters] = await getCatalogAll();
     
-    loadFavorites();  */
+    //Carga la primera página de personajes
+    catalogAll.initializePages(CARDS_PER_PAGE, true);
+    
+    let favoritesCatalog = new Catalog();
+    favoritesCatalog = catalogAll.filterCatalogByFavorites();
+}
+
+async function getCatalogAll() {
+
+    const catalogAll = new Catalog();
+    let allCharacters = [];
+
+    for (let page = 1; page <= PAGES_NUMBER_API; page++) {
+        const { data: dataCatalog, error } = await getCatalog(page);
+
+        if (error) {
+            alert("Ha ocurrido un error");
+        }
+
+        const characters = dataCatalog.data.map(c => Character.fromJson(c));
+
+        //Carga el catálogo con los personajes del JSON
+        // const characters = data.characters.map(c => Character.fromJson(c));
+
+        for (let i = 0; i < characters.length; i++) {
+            catalogAll.addCharacter(characters[i]);
+
+            allCharacters.push(characters[i]);
+        }
+    }
+
+    return [catalogAll, allCharacters];
+}
+
+
+LoadCatalog();

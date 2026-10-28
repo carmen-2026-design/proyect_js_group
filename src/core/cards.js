@@ -5,16 +5,12 @@ import {  renderFilterForm, renderCharacterSortSelect } from "../ui/renderer.js"
 import { getCatalog } from "../utils/api.js";
 import {  getUniqueValues, sortCharacters } from "../utils/functions.js";
 
-const PAGES_NUMBER_API = 1; //PAGE_SIZE_API = 500;
-
+const PAGES_NUMBER_API = 1; 
 const CARDS_PER_PAGE = 9;
 
 async function LoadCatalog() {
    
-
     const [catalogAll, characters] = await getCatalogAll();
-
-
 
     //Botones anterior/siguiente de la página de personajes
     const previousButton = document.getElementById("previous-button");

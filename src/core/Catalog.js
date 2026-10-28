@@ -137,7 +137,7 @@ class Catalog{
 };
 
 export default Catalog; 
-export {
-     filterCatalogByFavorites
-}
+// export {
+//      filterCatalogByFavorites
+// }
 
