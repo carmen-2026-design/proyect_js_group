@@ -1,0 +1,189 @@
+/* ==========================================
+   1. VARIABLES GENERALES
+========================================== */
+
+:root {
+    --azulDisney: #0b2d6b;
+    --dorado: #ffc857;
+    --azulCielo: #7ec8fc;
+    --morado: #b388ff;
+    --azulCards: #14344b;
+    --fondoOscuro: #0a0a0a;
+    --blanco: white;
+
+    --titulo: "Baloo 2";
+    --titulo1: "Pacifico";
+    --galleta: "Lilita One";
+}
+
+/* ==========================================
+   2. ESTRUCTURA GENERAL
+========================================== */
+
+.game-page {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--azulDisney);
+    color: var(--blanco);
+    font-family: var(--titulo), Arial, sans-serif;
+}
+
+.game-page * {
+    box-sizing: border-box;
+}
+
+.game-page main {
+    max-width: 900px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* ==========================================
+   3. IMAGEN DEL PERSONAJE
+========================================== */
+
+#characterImage {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: 280px;
+    object-fit: cover;
+
+    padding: 1.5rem;
+    background-color: var(--azulCards);
+    border: 2px solid var(--azulCielo);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================
+   4. PREGUNTA
+========================================== */
+
+#question {
+    margin: 0;
+    text-align: center;
+
+    font-family: var(--galleta), Arial, sans-serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--blanco);
+}
+
+/* ==========================================
+   5. OPCIONES DE RESPUESTA
+========================================== */
+
+#answerOptions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 750px;
+}
+
+#answerOptions button {
+    min-height: 75px;
+    padding: 1rem 1.5rem;
+
+    border: 2px solid var(--azulCielo);
+    border-radius: 12px;
+    background-color: var(--azulCards);
+    color: var(--blanco);
+
+    font-family: var(--titulo), Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#answerOptions button:hover {
+    background-color: var(--dorado);
+    border-color: var(--dorado);
+    color: var(--azulDisney);
+
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+#answerOptions button:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   6. MENSAJE DE RESULTADO
+========================================== */
+
+#resultMessage {
+    margin: 0;
+    min-height: 2rem;
+
+    text-align: center;
+    font-family: var(--titulo), Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dorado);
+}
+
+/* ==========================================
+   7. MARCADOR
+========================================== */
+
+#score {
+    margin: 0;
+
+    padding: 0.7rem 2rem;
+    border: 1px solid var(--azulCielo);
+    border-radius: 30px;
+    background-color: var(--azulCards);
+
+    font-family: var(--galleta), Arial, sans-serif;
+    font-size: 1.8rem;
+    color: var(--dorado);
+    text-align: center;
+}
+
+/* ==========================================
+   8. VERSIÓN MÓVIL
+========================================== */
+
+@media screen and (max-width: 800px) {
+
+    .game-page main {
+        padding: 2rem 1rem;
+        gap: 1.2rem;
+    }
+
+    #characterImage {
+        max-width: 200px;
+        height: 220px;
+    }
+
+    #question {
+        font-size: 1.8rem;
+    }
+
+    #answerOptions {
+        grid-template-columns: 1fr;
+    }
+
+    #answerOptions button {
+        min-height: 60px;
+        font-size: 1.1rem;
+    }
+
+    #score {
+        font-size: 1.5rem;
+    }
+}
