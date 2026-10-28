@@ -1,7 +1,7 @@
 import { FetchError } from "./errors.js";
 
 const API_URL = "https://api.disneyapi.dev/character";  //"http://api.disneyapi.dev/character?page=2&pageSize=50";
-const PAGE_SIZE_API = 50;
+const PAGE_SIZE_API = 200;
 
 async function fetchData(url) {
     try {

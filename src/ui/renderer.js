@@ -1,3 +1,5 @@
+import { toggleFavorites } from "../core/localStorage.js";
+
 function createCharacterArticle(character) {
     const { name, imageUrl, films } = character;
 
@@ -39,8 +41,32 @@ function createCharacterArticle(character) {
 
     favBtn.appendChild(icon)
 
+
     favBtn.addEventListener("click", () => {
-        character.toggleFavorite();
+        // Alterna en el localStorage y devuelve true (añadido) o false (eliminado)
+        const isFav = toggleFavorites(character); 
+    
+        // Actualizamos la propiedad del objeto
+        character.favorite = isFav;
+
+        if (character.favorite) {
+            icon.className = "fa-solid fa-heart";
+            favBtn.classList.add("fav-active");
+        } else {
+            icon.className = "fa-regular fa-heart";
+            favBtn.classList.remove("fav-active");
+
+            // Si estamos en la vista de favoritos, eliminamos la tarjeta visualmente
+            const catalogSection = document.getElementById("catalog-section");
+            if (catalogSection && catalogSection.classList.contains("favorite-view")) {
+                article.remove();
+            }
+        }
+    });
+
+   /*  favBtn.addEventListener("click", () => {
+        //character.toggleFavorite();
+        toggleFavorites(character);
 
 
         if (character.favorite) {
@@ -55,7 +81,7 @@ function createCharacterArticle(character) {
 
             }
         }
-    })
+    }) */
 
 
 
@@ -128,7 +154,7 @@ function renderCharacterSortSelect(){
 
     const orderSort = document.createElement("option");
     orderSort.value = "order";
-    orderSort.textContent = "A - Z";
+    orderSort.textContent = "A - Z"; 
 
     const reverseSort = document.createElement("option");
     reverseSort.value = "reverse";

@@ -1,4 +1,5 @@
 import { createCharacterArticle } from "../ui/renderer.js";
+import { getFavoritesFromLocalStorage } from "./localStorage.js";
 
 //Colección de objetos de la clase Character
 class Catalog{
@@ -97,18 +98,23 @@ class Catalog{
         return catalogToShow;
     }
 
-    //Devuelve los personajes favoritos
-    filterCatalogByFavorites() {
+
+     filterCatalogByFavorites(){
+        const charFavorites = getFavoritesFromLocalStorage(); // Array con los objetos guardados
         let favoriteCatalog = new Catalog();
 
-        this.characters.forEach((character) => {
-            if (character.favorite) {
+        // Recogemos los nombres de los favoritos para buscarlos rápido
+        const favoriteNames = charFavorites.map(f => f.name.toLowerCase());
+
+        this.characters.forEach((character, key) => {
+            if (favoriteNames.includes(key)) {
+                character.favorite = true;
                 favoriteCatalog.addCharacter(character);
             }
         });
 
-        favoriteCatalog.paintCatalog();
-    }
+        favoriteCatalog.paintCatalog();            
+    } 
 
 
     //Elimina los filtros
@@ -131,4 +137,7 @@ class Catalog{
 };
 
 export default Catalog; 
+// export {
+//      filterCatalogByFavorites
+// }
 
