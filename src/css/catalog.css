@@ -233,6 +233,20 @@ form[name="filter-form"] button[type="submit"]:hover {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  display: none;
+}
+
+#link-favoritos, #link-favoritos:link {
+    color: var(--blanco);
+    text-decoration: none;
+    font-family: var(--galleta);
+    font-weight: 700;
+    padding: 0.5rem;
+
+}
+
+#link-favoritos:hover{
+    color: var(--azulCielo);
 }
 
 #catalog-main .controladores button:hover {
