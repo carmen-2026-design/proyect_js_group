@@ -1,0 +1,398 @@
+/* ==========================================
+   1. FUENTES
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Lilita+One&family=Pacifico&display=swap');
+
+
+/* ==========================================
+   2. VARIABLES GENERALES
+========================================== */
+
+:root {
+    /* Colores */
+    --azulDisney: #0b2d6b;
+    --dorado: #ffc857;
+    --azulCielo: #7ec8fc;
+    --morado: #b388ff;
+    --azulCards: #14344b;
+    --fondoOscuro: #0a0a0a;
+    --blanco: #ffffff;
+
+    /* Fuentes */
+    --titulo: "Baloo 2", sans-serif;
+    --titulo1: "Pacifico", cursive;
+    --galleta: "Lilita One", sans-serif;
+}
+
+
+/* ==========================================
+   3. RESET BÁSICO
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--galleta);
+    background-image: url(../img/fondo-estrellas.svg);
+    min-height: 100vh;
+    color: var(--blanco);
+
+
+}
+
+
+/* ==========================================
+   4. FONDO GENERAL
+========================================== */
+
+/* body {
+
+background: linear-gradient(135deg,
+            var(--azulDisney) 0%,
+            var(--azulCards) 50%,
+            var(--azulDisney) 100%);
+
+font-family: var(--titulo);
+}
+ */
+
+/* ==========================================
+   5. VOLVER AL INICIO
+========================================== */
+header {
+     padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid var(--azulCielo);
+    background-color: var(--azulCards);
+}
+
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+        font-size: 1rem;
+
+}
+
+header a,
+header a:link {
+    text-decoration: none;
+/*     text-transform: uppercase;
+ */    color: var(--blanco);
+    font-weight: 700;
+    font-size: 1rem;
+    position: absolute;
+    left: 2%;
+    padding: 0.5rem;
+   
+}
+
+header a:hover {
+    color: var(--azulCielo);
+}
+
+header a:hover i{
+    color: var(--azulCielo);
+}
+
+
+
+/* .backHome {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 10;
+
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+
+    background-color: var(--azulCards);
+    color: var(--blanco);
+
+    border: 2px solid var(--azulCielo);
+    border-radius: 10px;
+
+    font-family: var(--galleta);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.backHome:hover {
+    background-color: var(--dorado);
+    color: var(--azulDisney);
+    border-color: var(--dorado);
+
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+ */
+
+/* ==========================================
+   6. ESTRUCTURA PRINCIPAL
+========================================== */
+
+main {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.characterSection,
+.quizSection {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ==========================================
+   7. SECCIÓN DEL PERSONAJE
+========================================== */
+
+.characterSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+}
+
+#characterImage {
+    width: 80%;
+    height: 75vh;
+
+    object-fit: fill;
+    object-position: center;
+    background-color: #DCEAF2;
+
+    border: 2px solid var(--dorado);
+    border-radius: 15px;
+}
+
+
+/* ==========================================
+   8. SECCIÓN DEL QUIZ
+========================================== */
+
+.quizSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    padding: 3rem;
+    gap: 1.5rem;
+
+    text-align: center;
+}
+
+
+/*    8.1. PREGUNTA
+_______________________________________________ */
+
+#question {
+    margin: 0;
+    padding: 1rem;
+
+    font-family: var(--galleta);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--blanco);
+
+    text-align: center;
+    line-height: 1.2;
+}
+
+
+/*    8.1. BOTONES DE RESPUESTA
+_______________________________________________ */
+
+#answerOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+#answerOptions button {
+    width: 100%;
+    min-height: 65px;
+    padding: 1rem 1.5rem;
+
+    background-color: var(--azulCards);
+    color: var(--blanco);
+    border: 2px solid var(--azulCielo);
+    border-radius: 12px;
+
+    font-family: var(--titulo);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el ratón */
+
+#answerOptions:not(.answered) button:hover {
+    background-color: var(--dorado);
+    color: var(--azulDisney);
+    border-color: var(--dorado);
+
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Efecto al pulsar */
+
+#answerOptions button:active {
+    transform: scale(0.98);
+}
+
+/* RESPUESTA CORRECTA */
+
+#answerOptions button.correct {
+    background-color: #166534;
+    border-color: #4ade80;
+    color: white;
+}
+
+/* RESPUESTA INCORRECTA */
+
+#answerOptions button.incorrect {
+    background-color: #991b1b;
+    border-color: #f87171;
+    color: white;
+}
+
+/* EVITAR EL HOVER DESPUÉS DE RESPONDER */
+
+#answerOptions.answered button {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* ==========================================
+   9. MARCADOR
+========================================== */
+
+/* #score {
+    margin: 0;
+    padding: 0.75rem 2rem;
+
+    background-color: var(--azulCielo);
+    color: var(--azulCards);
+
+    border: 2px solid var(--dorado);
+    border-radius: 12px;
+
+    font-family: var(--galleta);
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+}
+ */
+
+/* ==========================================
+   10. MENSAJE DE RESULTADO
+========================================== */
+
+/* #resultMessage {
+    margin: 0;
+    min-height: 2rem;
+
+    font-family: var(--titulo);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dorado);
+
+    text-align: center;
+} */
+
+
+/* ==========================================
+   11. DISEÑO RESPONSIVE
+========================================== */
+
+@media screen and (max-width: 800px) {
+
+    /* Estructura principal */
+
+    main {
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .characterSection,
+    .quizSection {
+        flex: auto;
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Imagen del personaje */
+
+    .characterSection {
+        padding: 5rem 1rem 1rem;
+    }
+
+    #characterImage {
+        width: 100%;
+        height: 35vh;
+        object-fit: fill;
+    }
+
+    /* Zona de preguntas */
+
+    .quizSection {
+        padding: 1rem 1.5rem 2rem;
+        gap: 1rem;
+    }
+
+    #question {
+        font-size: 1.8rem;
+        padding: 0.5rem;
+    }
+
+    /* Opciones de respuesta */
+
+    #answerOptions {
+        gap: 0.6rem;
+    }
+
+    #answerOptions button {
+        min-height: 55px;
+        padding: 0.8rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    /* Marcador y resultado */
+
+    #score {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #resultMessage {
+        font-size: 1.1rem;
+    }
+
+    /* Volver al inicio */
+
+    .backHome {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}

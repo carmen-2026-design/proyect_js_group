@@ -1,0 +1,406 @@
+
+html {
+    box-sizing: border-box;
+    
+}
+
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+/*VARIABLES GENERALES*/
+:root {
+    --azulDisney: #0b2d6b;
+    --dorado: #ffc857;
+    --azulCielo: #7ec8fc;
+    --morado: #b388ff;
+    --azulCards: #14344b;
+    --fondoOscuro: #0a0a0a;
+    --titulo: "Baloo 2";
+    --titulo1: "pacifico";
+    --galleta: "lilita one";
+    --blanco: white;
+}
+
+
+
+
+
+/* INICIO ESTILOS PÁGINA DE CATALOGO */
+html,
+body {
+    background-color: var(--azulDisney);
+    color: white;
+    background-image:  url(../img/fondo-estrellas.svg);
+}
+
+header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--azulCards);
+    border-bottom: 1px solid var(--azulCielo);
+    align-items: center;
+    padding: 1rem;
+
+}
+
+/*  header a i {
+    color: transparent;
+    transition: all 0.5s ease;
+} 
+ */
+header a,
+header a:link {
+    text-decoration: none;
+    /* text-transform: uppercase; */
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 1rem;
+    position: absolute;
+    left: 2%;
+   
+}
+
+header a:hover {
+    color: var(--azulCielo);
+}
+
+header a:hover i{
+    color: var(--azulCielo);
+}
+
+
+
+header h1 {
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+#catalog-main a i {
+    font-size: 2rem;
+    color: var(--blanco);
+    position: fixed;
+    right: 3%;
+    top: 75%;
+}
+
+#catalog-main a i:hover {
+    color: var(--dorado);
+}
+
+main{
+    margin-top: 160px ;
+    
+}
+
+#catalog-hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    height: auto;
+   
+
+}
+
+form[name="filter-form"] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--azulCards);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--azulCielo);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    
+}
+
+
+
+
+.filtros-select{
+    width: 100%;
+}
+
+.radio-group label {
+    flex: 1;
+    text-align: center;
+    margin: 4px;
+    padding: 0.75rem 1rem;
+    background-color: rgba(255, 255, 255, 0.08); /* Blanco translúcido por defecto */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+}
+
+
+.radio-group label:hover {
+    background-color: rgba(255, 200, 87, 0.15); 
+    border-color: var(--dorado);
+}
+
+
+.radio-group input[type="radio"] {
+    accent-color: var(--azulDisney); 
+    margin-bottom: 24px;
+    cursor: pointer;
+
+    
+}
+
+.radio-group label:has(input[type="radio"]:checked) {
+    background-color: var(--dorado);
+    color: var(--fondoOscuro); 
+    border-color: var(--dorado);
+    box-shadow: 0 0 10px rgba(255, 200, 87, 0.4);
+}
+
+form[name="filter-form"] .filtros-select {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--azulCielo);
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    width: 100%;          
+    max-width: 100%;      
+    min-width: 0;         
+    height: 48px;         
+    
+}
+
+form[name="filter-form"] button[type="submit"] {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--dorado);
+    color: var(--fondoOscuro);
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+form[name="filter-form"] button[type="submit"]:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+#catalog-main section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    max-width: 980px;
+    margin: 0 auto;
+    gap: 1rem;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#catalog-main .controladores {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 2rem;
+}
+
+#catalog-main .controladores button {
+    font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  display: none;
+}
+
+#link-favoritos, #link-favoritos:link {
+    color: var(--blanco);
+    text-decoration: none;
+    font-family: var(--galleta);
+    font-weight: 700;
+    padding: 0.5rem;
+
+}
+
+#link-favoritos:hover{
+    color: var(--azulCielo);
+}
+
+#catalog-main .controladores button:hover {
+background-color: var(--dorado);
+/* color: var(--azulDisney);
+ */}
+
+#catalog-main section article {
+    width: 32%;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    background-color: var(--azulCards);
+    border: 1px solid var(--azulCielo);
+    cursor: pointer;
+    transition: all 0.5s ease;
+    padding: 0;
+    position: relative;
+}
+
+
+
+#catalog-main section article button {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: none;
+    outline: none;
+    background-color: #ffffffbd;
+}
+
+#catalog-main section article i {
+    font-size: 1.4rem;
+    
+}
+
+#catalog-main section article h2, #catalog-main section article p {
+    margin-left: 0.5rem;
+}
+
+.fav-active {
+    color: #e63946;
+}
+
+
+.characterFilms {
+    white-space: pre-line;
+}
+
+#catalog-main section article:hover {
+    transform: translateY(-2px);
+
+}
+
+#catalog-main>div  {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+
+
+#catalog-main img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+i.oculto {
+    display: none;
+}
+
+#previous-button, #next-button {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: #f0f0f0;
+    color: #222;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#previous-button:hover, #next-button:hover
+{
+    background: var(--dorado);
+    color: var(--fondoOscuro);
+    transform: scale(1.1);
+    font-weight: 700;
+}
+
+form[name="filter-form"] button {
+  width: 100%; 
+  padding: 10px 0; 
+  margin-top: 10px;
+  border-radius: 8px;
+  outline: none;
+  border: none; 
+}
+
+form[name="filter-form"] button:hover {
+box-shadow: 0 0 15px rgba(100, 149, 237, 0.6);}
+
+/* INICIO VERSIÓN MOVIL*/
+
+@media screen and (max-width:800px) {
+
+    header h1 {
+    font-size: 1rem;
+}
+
+#catalog-main section article {
+    width: 48%;
+}
+header a, header a:link
+ {
+    font-size: 1.2rem;
+    top: 27%;
+}
+}
+
+@media screen and (max-width:502px) {
+
+#catalog-main section article {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#catalog-main section{
+    gap: 2rem;
+}
+
+header{
+    padding: 0;
+}
+
+h1{
+    margin: 1rem;
+}
+}
+
+
+
+/* FIN ESTILOS PÁGINA DE CATALOGO */
