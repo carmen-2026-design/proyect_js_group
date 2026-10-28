@@ -1,11 +1,21 @@
-function  getFavoritesFromLocalStorage(){
+/* function  getFavoritesFromLocalStorage(){
     //Si no exite el localStorage, devuelve null
-    const favoritesString = localStorage.getItem("favorites" || "[]");
+    const favoritesString = localStorage.getItem("favorites" || "[]"); 
     const favorites = JSON.parse(favoritesString);
     return favorites;
 }
+ */
 
-function saveFavoritesToLocalStofare(favorites){
+function getFavoritesFromLocalStorage(){
+    const favoritesString = localStorage.getItem("favorites");
+    // Si no existe, devolvemos un array vacío por defecto
+    if (!favoritesString) {
+        return [];
+    }
+    return JSON.parse(favoritesString);
+}
+
+function saveFavoritesToLocalStorage(favorites){
     const favoritesString =JSON.stringify(favorites);
     localStorage.setItem("favorites", favoritesString);
 }
@@ -19,7 +29,7 @@ function addToFavorites(element){
     const oldFavorite = favorites.find(f=>f.name === element.name);
     if (!oldFavorite){
         favorites.push(element);
-        saveFavoritesToLocalStofare(favorites);
+        saveFavoritesToLocalStorage(favorites);
     }
 }
 
@@ -28,7 +38,7 @@ function removeFavorite(element){
     const oldFavoriteIndex = favorites.findIndex(f=>f.name === element.name);
     if (oldFavoriteIndex !== -1){
         favorites.splice(oldFavoriteIndex,1);
-        saveFavoritesToLocalStofare(favorites);
+        saveFavoritesToLocalStorage(favorites);
     }
 }
 
@@ -43,7 +53,7 @@ function toggleFavorites(element){
     }else{
         favorites.splice(oldFavoriteIndex,1);
     }
-    saveFavoritesToLocalStofare(favorites);
+    saveFavoritesToLocalStorage(favorites);
     return result;
 }
 
@@ -59,7 +69,7 @@ function isInFavorites(element){
 
 export {
     getFavoritesFromLocalStorage,
-    saveFavoritesToLocalStofare,
+    saveFavoritesToLocalStorage,
     clearFavorites,
     addToFavorites,
     removeFavorite,

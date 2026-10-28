@@ -1,3 +1,4 @@
+import { isInFavorites } from "./localStorage.js";
 
 class Character{
 
@@ -6,7 +7,7 @@ class Character{
         this.imageUrl = imageUrl;
         this.films = films;   //Arrray
         this.videoGames = videoGames; //Array
-        this.favorite = false;
+        this.favorite = isInFavorites(this);
     }
 
     static fromJson({name, imageUrl, films, videoGames}){
@@ -16,6 +17,8 @@ class Character{
 
     toggleFavorite() {
         this.favorite = !this.favorite;
+       
+
         
     }
 }
