@@ -1,7 +1,7 @@
  // =============== Valores dentro de categorias ================== //
 
 function getUniqueValues(characters, property) {
-    let uniqueValues = new Set(); // para eviatr vlores repetidos
+    let uniqueValues = new Set(); // para eviatr valores repetidos
 
     characters.forEach(character => {
         let valor = character[property];

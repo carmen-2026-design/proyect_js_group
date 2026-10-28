@@ -11,9 +11,12 @@ const CARDS_PER_PAGE = 9;
 
 async function LoadCatalog() {
     /* let catalogAll = new Catalog();
-    catalogAll = await getCatalogAll(); */
+    catalogAll = await getCatalogAll();  */
 
-    const { catalogAll, characters } = await getCatalogAll();
+
+    const [catalogAll, characters] = await getCatalogAll();
+
+
 
     //Botones anterior/siguiente de la página de personajes
     const previousButton = document.getElementById("previous-button");
@@ -171,7 +174,7 @@ async function getCatalogAll() {
         }
     }
 
-    return { catalogAll, characters: allCharacters };
+    return [catalogAll, allCharacters];
 }
 
 
