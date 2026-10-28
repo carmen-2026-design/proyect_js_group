@@ -98,10 +98,13 @@ function renderFilterForm(){
 
     // Creación del select  para los valores
     const select = document.createElement("select");
+    select.classList.add("filtros-select");
     select.name = "filter-value";
 
     const button = document.createElement("button");
     button.textContent = "Filtrar";
+
+    
 
     form.append(radioGroup, select, button);
   
