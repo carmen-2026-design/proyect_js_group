@@ -78,12 +78,13 @@ header h1 {
 #catalog-main section {
     display: flex;
     flex-wrap: wrap;
-    /* width: 96%; */
+    width: 96%;
     max-width: 980px;
     margin: 0 auto;
     gap: 1rem;
+    justify-content: center;
+    align-items: stretch;
 }
-
 #catalog-main section article {
     width: 32%;
     overflow: hidden;
@@ -180,9 +181,6 @@ i.oculto {
     transform: scale(1.1);
     font-weight: 700;
 }
-
-/*botones IA*/
-
 
 /* INICIO VERSIÓN MOVIL*/
 
