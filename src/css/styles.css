@@ -8,14 +8,14 @@
 
 
 :root {
---azulDisney: #0b2d6b;
---dorado: #ffc857;
---azulCielo: #7ec8fc;
---morado: #b388ff;
---fondoOscuro: #0a0a0a;
---titulo: "Baloo 2";
---titulo1: "pacifico";
---galleta: "lilita one";
+    --azulDisney: #0b2d6b;
+    --dorado: #ffc857;
+    --azulCielo: #7ec8fc;
+    --morado: #b388ff;
+    --fondoOscuro: #0a0a0a;
+    --titulo: "Baloo 2";
+    --titulo1: "pacifico";
+    --galleta: "lilita one";
 }
 
 
@@ -30,8 +30,8 @@ body {
 #main-index section {
     height: 100vh;
     background-color: rgba(128, 128, 128, 0.297);
-        position: relative;
-        overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
 }
 
@@ -43,6 +43,7 @@ body {
     color: white;
     font-family: var(--galleta);
 }
+
 #main-index a {
     color: white;
     font-family: var(--galleta);
@@ -67,17 +68,17 @@ body {
 }
 
 #main-index div div a:hover {
-   background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.267);
     color: var(--dorado);
 }
 
 .modal {
-position: absolute;
-top: 10%;
-z-index: 111;
-width: 100%;
+    position: absolute;
+    top: 10%;
+    z-index: 111;
+    width: 100%;
 }
 
 header {
@@ -97,32 +98,157 @@ header {
 footer {
     position: fixed;
     bottom: 0;
-    }
+}
 
-    footer p {
-        color: white;
-            text-align: center;
-            width: 100%;
+footer p {
+    color: white;
+    width: 100%;
 
-    }
+}
 
 
 video {
     max-width: 100%;
 }
 
-@media screen and (max-width: 800px) {
-  #main-index section>div div{
- 
-    width: 45%;
-    height: 28vh;
-    box-sizing: border-box;
-    padding: 1rem;
+
+
+/*FIN DE VERSIÓN ESCRITORIO*/
+
+/*INICIO VERSIÓN MOVIL*/
+
+@media screen and (max-width: 1250px) {
+    video {
+        display: none;
+    }
+
+    body {
+        display: block;
+        background-image: url(../img/disneyFondo.webp);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 100vh;
+
+    }
+
+    #main-index div>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0rem;
+        row-gap: 2rem;
+        margin-top: 2rem
+    }
+.modal {
+    top: 25%;
 }
 
- 
-    
+#main-index h1{
+    font-size: 4rem;
 }
+
+
+}
+
+/* @media screen and (max-width: 500px) {
+
+    #main-index div>div {
+        padding: 0rem;
+    }
+
+    #main-index div div a {
+        font-size: 2.5rem;
+    }
+
+    video {
+        max-width: none;
+    }
+
+.modal {
+    top: 25%;
+}
+
+#main-index div div a {
+    margin-top: 4rem;
+}
+
+#main-index h1 {
+    font-size: 3rem;
+}
+
+header a img {
+    width: 100px;
+}
+}
+
+@media screen and (min-width: 501px) and (max-width: 799px) {
+    #main-index div>div {
+        padding: 2rem;
+    }
+
+    #main-index div div a {
+    font-size: 2rem;
+}
+
+.modal {
+    top: 30%;
+}
+}
+ */
+
+
+
+
+/* @media screen and (max-width: 800px) {
+    #main-index section>div div {
+
+        width: 45%;
+        height: 28vh;
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+
+    #main-index div>div {
+        padding: 2rem;
+    }
+
+    #main-index h1 {
+        font-size: 4rem;
+    }
+
+
+
+} */
+
+/* @media screen and (max-width: 1900px) {
+     video {
+        max-width: 100%;
+    }
+
+    .modal {
+        top: 15%;
+    }
+
+    #main-index div div a {
+        margin-top: 0;
+    }
+
+    #main-index div>div {
+        padding: 3rem;
+    }
+
+    #main-index div div a {
+        font-size: 4rem;
+    }
+}
+
+#main-index h1 {
+    font-size: 4rem;
+}
+ */
+
+
+
 
 /* FIN ESTILOS PÁGINA DE INICIO */
-

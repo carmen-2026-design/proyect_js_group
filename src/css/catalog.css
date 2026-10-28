@@ -66,7 +66,11 @@ header h1 {
     color: var(--blanco);
     position: fixed;
     right: 3%;
-    top: 90%;
+    top: 75%;
+}
+
+#catalog-main a i:hover {
+    color: var(--dorado);
 }
 
 
@@ -74,7 +78,7 @@ header h1 {
 #catalog-main section {
     display: flex;
     flex-wrap: wrap;
-    width: 96%;
+    /* width: 96%; */
     max-width: 980px;
     margin: 0 auto;
     gap: 1rem;
@@ -90,6 +94,40 @@ header h1 {
     border: 1px solid var(--azulCielo);
     cursor: pointer;
     transition: all 0.5s ease;
+    padding: 0;
+    position: relative;
+}
+
+
+
+#catalog-main section article button {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: none;
+    outline: none;
+    background-color: #ffffffbd;
+}
+
+#catalog-main section article i {
+    font-size: 1.4rem;
+    
+}
+
+#catalog-main section article h2, #catalog-main section article p {
+    margin-left: 0.5rem;
+}
+
+.fav-active {
+    color: #e63946;
+}
+
+
+.characterFilms {
+    white-space: pre-line;
 }
 
 #catalog-main section article:hover {
@@ -107,6 +145,9 @@ header h1 {
 
 #catalog-main img {
     width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .card-info {
@@ -120,7 +161,6 @@ i.oculto {
     display: none;
 }
 
-/*botones IA*/
 #previous-button, #next-button {
     width: 55px;
     height: 55px;
@@ -158,6 +198,26 @@ i.oculto {
 header a, header a:link
  {
     font-size: 1.2rem;
+}
+}
+
+@media screen and (max-width:502px) {
+
+#catalog-main section article {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#catalog-main section{
+    gap: 2rem;
+}
+
+header{
+    padding: 0;
+}
+
+h1{
+    margin: 1rem;
 }
 }
 
