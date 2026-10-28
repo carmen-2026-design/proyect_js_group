@@ -87,7 +87,7 @@ header h1 {
 }
 
 #catalog-main a i {
-    font-size: 1rem;
+    font-size: 2rem;
     color: var(--blanco);
     position: fixed;
     right: 3%;
@@ -337,12 +337,24 @@ i.oculto {
     font-weight: 700;
 }
 
+form[name="filter-form"] button {
+  width: 100%; 
+  padding: 10px 0; 
+  margin-top: 10px;
+  border-radius: 8px;
+  outline: none;
+  border: none; 
+}
+
+form[name="filter-form"] button:hover {
+box-shadow: 0 0 15px rgba(100, 149, 237, 0.6);}
+
 /* INICIO VERSIÓN MOVIL*/
 
 @media screen and (max-width:800px) {
 
     header h1 {
-    font-size: 4rem;
+    font-size: 1rem;
 }
 
 #catalog-main section article {
@@ -351,6 +363,7 @@ i.oculto {
 header a, header a:link
  {
     font-size: 1.2rem;
+    top: 27%;
 }
 }
 
