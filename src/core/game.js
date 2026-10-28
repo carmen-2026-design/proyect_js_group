@@ -239,10 +239,31 @@ function showResult(isCorrect, correctAnswer) {
 }
 
 
+function showAnswerResult(selectedAnswer, correctAnswer) {
+
+    let optionsElement = document.getElementById("answerOptions");
+    let buttons = optionsElement.querySelectorAll("button");
+
+    optionsElement.classList.add("answered");
+
+    buttons.forEach(function(button) {
+
+        if (button.textContent === correctAnswer) {
+            button.classList.add("correct");
+        }
+
+        if (button.textContent === selectedAnswer && selectedAnswer !== correctAnswer) {
+            button.classList.add("incorrect");
+        }
+    });
+}
+
+
 function showScore() {
     let score = document.getElementById("score");
     score.textContent = game.score.rightAnswered + " / " + game.score.totalAnswered;
 }
+
 
 function showGameOver() {
 
@@ -280,8 +301,7 @@ function handleAnswer(selectedAnswer, round) {
             game.score.rightAnswered++;
         }
 
-        showScore();
-        showResult(isCorrect, correctAnswer);
+        showAnswerResult(selectedAnswer, correctAnswer);
         setTimeout(newRound, 2000);
     }
 }
@@ -291,16 +311,14 @@ function handleAnswer(selectedAnswer, round) {
    5. GESTIÓN DE RONDAS Y PARTIDA
 ========================================== */
 
-
 // Mostrar una ronda.
 function showRound(round) {
     showQuestion(round);
     showCharacter(round);
     showOptions(round);
 
-    //Limpiar el resultado de la ronda anterior
-    let resultMessage = document.getElementById("resultMessage");
-    resultMessage.textContent = "";
+    let optionsElement = document.getElementById("answerOptions");
+    optionsElement.classList.remove("answered");
 
 }
 
@@ -333,9 +351,6 @@ function startGame() {
     // Reiniciar el marcador
     game.score.rightAnswered = 0;
     game.score.totalAnswered = 0;
-
-    // Mostrar el marcador inicial
-    showScore();
 
     // Comenzar la primera ronda
     newRound();
