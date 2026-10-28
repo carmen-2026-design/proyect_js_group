@@ -1,30 +1,12 @@
+import { getCatalog } from "../utils/api.js";
+
 /* ==========================================
    1. DATOS DEL JUEGO
 ========================================== */
 
-const Characters = [
-    {
-        name: "Mickey Mouse",
-        imageUrl: "https://static.wikia.nocookie.net/disney/images/2/2e/Disney_Mickey_Mouse.png"
-    },
-    {
-        name: "Baloo",
-        imageUrl: "https://static.wikia.nocookie.net/disney/images/3/31/Profile_-_Baloo.jpeg"
-    },
-    {
-        name: "Capitán Amelia",
-        imageUrl: "https://static.wikia.nocookie.net/disney/images/0/0c/Profile_-_Captain_Amelia.png"
-    },
-    {
-        name: "Aquiles",
-        imageUrl: "https://static.wikia.nocookie.net/disney/images/6/67/HATS_Achilles.png"
-    },
-    {
-        name: "Reina Atenea",
-        imageUrl: "https://static.wikia.nocookie.net/disney/images/4/41/Athena_TLM.jpg"
-    }
-];
+let Characters = [];
 
+const MAX_ROUNDS = 10;
 
 /* ==========================================
    2. GENERACIÓN DE PREGUNTAS Y RESPUESTAS
@@ -40,9 +22,8 @@ function randomCharacter(charactersList) {
 
 // Seleccionar una categoría disponible del personaje.
 function randomCategory(chosenCharacter) {
-    let questionCategorys = Object.keys(chosenCharacter);
 
-    questionCategorys.splice(questionCategorys.indexOf("imageUrl"), 1);
+    let questionCategorys = ["name", "films", "videoGames"];
 
     let availableCategorys = questionCategorys.filter(
         Category => chosenCharacter[Category].length > 0
@@ -246,7 +227,7 @@ function showAnswerResult(selectedAnswer, correctAnswer) {
 
     optionsElement.classList.add("answered");
 
-    buttons.forEach(function(button) {
+    buttons.forEach(function (button) {
 
         if (button.textContent === correctAnswer) {
             button.classList.add("correct");
@@ -312,6 +293,19 @@ function handleAnswer(selectedAnswer, round) {
 ========================================== */
 
 // Mostrar una ronda.
+
+async function loadCharacters() {
+    let resultAPI = await getCatalog();
+
+    if (resultAPI.error !== null || resultAPI.data === null || Array.isArray(resultAPI.data.data) === false) {
+        return [];
+    }
+
+    let charactersAPI = resultAPI.data.data;
+
+    return charactersAPI;
+}
+
 function showRound(round) {
     showQuestion(round);
     showCharacter(round);
@@ -325,7 +319,13 @@ function showRound(round) {
 
 // Generar una nueva ronda sin repetir personajes.
 function newRound() {
-    // Recuperar personajes cuando se agotan.
+    // Terminar cuando se alcance el máximo de preguntas
+    if (game.score.totalAnswered === MAX_ROUNDS) {
+        endGame();
+        return;
+    }
+
+    // Termianr juego cuando se agoten los personajes.
     if (game.availableCharacters.length === 0) {
         endGame();
         return;
@@ -343,7 +343,16 @@ function newRound() {
 
 
 // Inicializar una partida.
-function startGame() {
+async function startGame() {
+
+    Characters = await loadCharacters();
+    console.log(Characters);
+    console.log("Personajes cargados:", Characters.length);
+
+    if (Characters.length === 0) {
+        alert("No se han podido cargar los personajes");
+        return;
+    }
 
     // Preparar los personajes disponibles
     game.availableCharacters = Characters.slice();
@@ -358,8 +367,8 @@ function startGame() {
 
 
 function endGame() {
-    sessionStorage.setItem("rightAnswered",game.score.rightAnswered);
-    sessionStorage.setItem("totalAnswered",game.score.totalAnswered);
+    sessionStorage.setItem("rightAnswered", game.score.rightAnswered);
+    sessionStorage.setItem("totalAnswered", game.score.totalAnswered);
     window.location.href = "./gameResult.html";
 }
 /* ==========================================
