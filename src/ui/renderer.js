@@ -57,7 +57,7 @@ function createCharacterArticle(character) {
 
 
 
-//================= Form Filtros ==================//
+ //================= Form Filtros ==================//
 
 function renderFilterForm(){
     const form = document.createElement("form");
@@ -97,7 +97,7 @@ function renderFilterForm(){
   
     return form;
 }
-
+ 
 
 // ============= Botone de orden alfabético ============== //
 

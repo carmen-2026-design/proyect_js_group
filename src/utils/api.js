@@ -1,6 +1,7 @@
 import { FetchError } from "./errors.js";
-const API_URL = "https://api.disneyapi.dev/character";
-const API_URL_NEXTPAGE = "http://api.disneyapi.dev/character?page=2&pageSize=50";
+
+const API_URL = "https://api.disneyapi.dev/character";  //"http://api.disneyapi.dev/character?page=2&pageSize=50";
+const PAGE_SIZE_API = 50;
 
 async function fetchData(url){
     try{
@@ -25,10 +26,17 @@ async function fetchData(url){
 
 }
 
-function getCatalog(){
+function getCatalog(page=1){
     let url = API_URL;
+    const urlClass = new URL(url);
+    
+    urlClass.searchParams.append("page", page);
+    urlClass.searchParams.append("pageSize", PAGE_SIZE_API);
+    url = urlClass.toString();
+             
     return fetchData(url);
 }
+
 
 // const result = await getCatalog();
 // console.log(result);

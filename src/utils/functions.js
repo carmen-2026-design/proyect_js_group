@@ -1,7 +1,7 @@
-// =============== Valores dentro de categorias ================== //
+ // =============== Valores dentro de categorias ================== //
 
 function getUniqueValues(characters, property) {
-    let uniqueValues = new Set(); // para eviatr vlores repetidos
+    let uniqueValues = new Set(); // para eviatr valores repetidos
 
     characters.forEach(character => {
         let valor = character[property];
@@ -25,7 +25,7 @@ function getUniqueValues(characters, property) {
     let result = [...uniqueValues].sort();
     return result
 }
-
+ 
 
 // =============== Ordenar alfabeticamente ================== //
 
