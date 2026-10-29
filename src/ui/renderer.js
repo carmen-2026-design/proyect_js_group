@@ -64,29 +64,6 @@ function createCharacterArticle(character) {
         }
     });
 
-   /*  favBtn.addEventListener("click", () => {
-        //character.toggleFavorite();
-        toggleFavorites(character);
-
-
-        if (character.favorite) {
-            icon.className = "fa-solid fa-heart";
-            favBtn.classList.add("fav-active");
-        } else {
-            icon.className = "fa-regular fa-heart";
-            favBtn.classList.remove("fav-active")
-
-            if(!character.favorite && article.closest("#catalog-section").classList.contains("favorite-view")){
-                article.remove()
-
-            }
-        }
-    }) */
-
-
-
-    // favBtn.addEventListener("click", () => {alert(`Te gusta ${name}`)});
-
     article.append(characterImage, characterName, characterFilms, favBtn);
     return article;
 }
