@@ -37,11 +37,12 @@ article.card-character {
 
 main>section>section{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
     max-width: 980px;
     margin: 0 auto;
-    column-gap: 1rem;
+    gap: 1rem;
 }
 article.card-character img{
     width: 100%;
@@ -66,4 +67,16 @@ button.btn-fav {
     border: none;
     outline: none;
     background-color: #ffffffbd;
+}
+
+
+@media screen and (max-width: 980px) {
+article.card-character {
+    width: 49%;
+
+}
+ header a {
+    font-size: 1rem;
+ }
+    
 }
